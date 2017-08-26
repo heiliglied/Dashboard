@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-/* moon router */
+/* GET home page. */
 router.get('/', function (req, res, next) {
-    res.send('Im jaeman');
+    res.send('Im');
 });
 
 module.exports = router;
