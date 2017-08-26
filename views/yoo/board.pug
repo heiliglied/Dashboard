@@ -1,0 +1,38 @@
+extends ../layout
+
+block content
+  .container.mt-5
+    table.table.table-striped.table-hover
+      thead
+        tr
+          th #
+          th 제목
+          th 글쓴이
+          th 시간
+      tbody
+        tr
+          th(scope='row') 1
+          td Mark
+          td Otto
+          td @mdo
+    hr
+    .btn-toolbar.justify-content-between(role='toolbar', aria-label='Toolbar with button groups')
+      form.form-inline.my-2.my-lg-0
+        input.form-control.mr-sm-2(type='text', placeholder='Search', aria-label='Search')
+        button.btn.btn-outline-secondary.my-2.my-sm-0(type='submit') Search
+      a(href="/yoo/add")
+        button.btn.btn-light 글쓰기
+    nav(aria-label='Page navigation')
+      ul.pagination.justify-content-center
+        li.page-item.disabled
+          a.page-link(href='#', tabindex='-1') Previous
+        li.page-item
+          a.page-link(href='#') 1
+        li.page-item
+          a.page-link(href='#') 2
+        li.page-item
+          a.page-link(href='#') 3
+        li.page-item
+          a.page-link(href='#') Next
+
+
