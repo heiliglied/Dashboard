@@ -10,6 +10,7 @@ const index = require('./routes/index');
 const moon = require('./routes/moon');
 const im = require('./routes/im');
 const lee = require('./routes/lee');
+const yoo = require('./routes/yoo');
 
 const app = express();
 
@@ -35,6 +36,7 @@ app.use('/', index);
 app.use('/moon', moon);
 app.use('/im', im);
 app.use('/lee', lee);
+app.use('/yoo', yoo);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
