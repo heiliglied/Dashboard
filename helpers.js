@@ -4,7 +4,7 @@ exports.dump = (obj) => JSON.stringfy(obj, null, 2);
 
 exports.menu = [
   { slug: '/moon', title: 'Moon'},
-  { slug: '/lim', title: 'lim'},
+  { slug: '/im', title: 'im'},
   { slug: '/lee', title: 'lee'},
   { slug: '/yoo', title: 'yoo'}
 ];
