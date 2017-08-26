@@ -1,9 +1,9 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const boardController = require('../controller/yoo/boardController');
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
-    res.send('yoo');
-});
+router.get('/', boardController.getBoard);
+router.get('/add', boardController.addPost);
 
 module.exports = router;
