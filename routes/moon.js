@@ -6,8 +6,9 @@ router.get('/', function (req, res, next) {
     res.render('moon/index');
 });
 
-router.get('/wright', function (req, res, next) {
-    res.send('alert');
+router.get('/write', function (req, res, next) {
+    res.render('moon/write', { variable: 'Express' });
+    //res.send('alert');
 });
 
 module.exports = router;
