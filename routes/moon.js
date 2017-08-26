@@ -7,7 +7,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/write', function (req, res, next) {
-    res.render('moon/write', { variable: 'Express' });
+    res.render('moon/write', { title: 'moon' });
 });
 
 module.exports = router;
