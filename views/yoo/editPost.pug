@@ -1,4 +1,23 @@
 extends ../layout
 
 block content
-  p form
+  .container
+    form(action='/yoo/add' method='post')
+      .form-group
+        label.col-form-label(for='title') Title
+        input#title.form-control(
+          type='text', name='title' placeholder='Input your title')
+      .form-group
+        label.col-form-label(for='content') Content
+        textarea#content.form-control(
+          rows=10 type='text', name='content' placeholder='input your text')
+      .row
+        .form-group.col-md-6
+          label.col-form-label(for='name') Name
+          input#name.form-control(
+            type='text', name='name' placeholder='Input your name')
+        .form-group.col-md-6
+          label.col-form-label(for='password') Password
+          input#password.form-control(
+            type='password', name='password' placeholder='Input your Password')
+      button.btn.btn-primary.btn-block(type='submit') Submit

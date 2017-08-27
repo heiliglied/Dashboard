@@ -10,6 +10,9 @@ mongoose.connection.on('error', (err) => {
   console.error(`🚫🚫🚫🚫 → ${err.message}`);
 });
 
+// import models
+require('./models/yoo/Post');
+
 const app = require('./app');
 const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
