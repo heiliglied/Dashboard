@@ -1,3 +1,5 @@
+// moment library handle time.
+exports.moment = require('moment');
 
 // Dump is debugging function like console.log
 exports.dump = (obj) => JSON.stringfy(obj, null, 2);

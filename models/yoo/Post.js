@@ -31,10 +31,14 @@ const postSchema = new mongoose.Schema({
 });
 
 postSchema.pre('save', async function(next) {
-  const maxNumber = await this.constructor.find().sort({number: -1}).limit(1);
+  const maxNumberPost = await this
+    .constructor
+    .find()
+    .sort({number: -1})
+    .limit(1);
   
-  if (maxNumber.length){
-    this.number = maxNumber[0].number + 1;
+  if (maxNumberPost.length) {
+    this.number = maxNumberPost[0].number + 1;
   }
   next();
 });
