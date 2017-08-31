@@ -1,0 +1,38 @@
+doctype html
+html(lang='ko')
+  head    
+    // Required meta tags
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    // Bootstrap CSS
+    link(rel='stylesheet' href='http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css')
+
+    block addhead
+
+  body
+    block header
+        nav.navbar.navbar-default
+            div.container-fluid
+                div.navbar-header
+                    button.navbar-toggle(data-toggle='collapse' data-target='#navbarSupportedContent')
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                    a.navbar-brand(href='/') 스터디
+                div.collapse.navbar-collapse(id='navbarSupportedContent')
+                    ul.nav.navbar-nav
+                        for item in h.menu
+                            li(class=(currentPath.startsWith(item.slug) ? 'active' : ''))
+                                a.nav-link(href=item.slug) #{item.title}
+                    form.navbar-form.navbar-right(role="search")
+                        div.form-group(style='margin-right: 2px')
+                            input.form-control(type="text" placeholder="Search")
+                        button.btn.btn-default(type='submit') Submit
+    block content
+
+    block script
+      script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js', integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN', crossorigin='anonymous')
+      script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js', integrity='sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4', crossorigin='anonymous')
+      script(src='http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js')
+
+    block addscript
