@@ -8,3 +8,7 @@ router.get('/add', boardController.addPost);
 router.post('/add', boardController.createPost);
 
 module.exports = router;
+
+
+
+
