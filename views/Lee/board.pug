@@ -1,0 +1,31 @@
+extends ../layout
+
+block content
+	.container.mt-5
+		table.table
+			thead.thead-inverse
+				tr
+					th 번호
+					th 제목
+					th 작성자
+					th 조회수
+					th 작성시간
+			tbody
+				tr
+					th 1
+					th 테스트 게시판
+					th 이정재
+					th 77
+					th 2017-08-30
+
+
+	.row
+		.col-9
+
+		.btngroup(role='toolbar', aria-label='button groups')
+			a(href="/Lee/write")
+				button.btn.btn-success 글쓰기
+			a(href="/Lee/delete")
+				button.btn.btn-danger 삭제
+			a(href="/Lee/refresh")
+				button.btn.btn-info 새로고침
