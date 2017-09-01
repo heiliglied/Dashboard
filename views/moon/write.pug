@@ -9,10 +9,13 @@ block content
     form(name='write_form' method='post' action='/moon/post')
         div(class='content_box')
             div(class='subject_line')
+                input(class='text_box' name='name' placeholder='작성자')
+            div(style='height: 30px')
+            div(class='subject_line')
                 input(class='text_box' name='subject' placeholder='제목을 입력해주삼.')
             div(style='height: 30px')
             div(class='contents')
-                div(id='content' name='content')
+                textarea(id='content' name='content')
             div(style='text-align: center;')
                 button(type='submit') 작성
 

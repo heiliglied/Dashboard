@@ -12,6 +12,7 @@ mongoose.connection.on('error', (err) => {
 
 // import models
 require('./models/yoo/Post');
+require('./models/moon/Content');
 
 const app = require('./app');
 const port = normalizePort(process.env.PORT || '3000');
