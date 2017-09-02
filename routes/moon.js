@@ -7,9 +7,7 @@ router.get('/', function (req, res, next) {
     res.render('moon/index');
 });
 
-router.get('/list', function (req, res, next) {
-    controller.list();
-});
+router.get('/list/:page?/:key?', controller.list);
 
 router.get('/write', function (req, res, next) {
     res.render('moon/write', { title: 'moon' });
