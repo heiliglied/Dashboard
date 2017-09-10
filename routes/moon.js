@@ -9,10 +9,18 @@ router.get('/', function (req, res, next) {
 
 router.get('/list/:page?/:key?', controller.list);
 
+router.get('/view/:number', controller.view);
+
 router.get('/write', function (req, res, next) {
     res.render('moon/write', { title: 'moon' });
 });
 
+router.get('/modify/:number', controller.modify);
+
 router.post('/post', controller.post);
+
+router.post('/update', controller.update);
+
+router.post('/delete', controller.delete);
 
 module.exports = router;
