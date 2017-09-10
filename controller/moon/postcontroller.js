@@ -46,22 +46,20 @@ exports.list = async function (req, res) {
         page = 1;
     }
 
-    //console.log(totalCount);
-
-    var lists = await Content.find().sort({ number: -1 });
-
-    /*
-    var list = await Content.find({
-        $or: [
-            {
-                'name': '/'+key+'/'
-            },
-            {
-                'subject': '/' + key + '/'
-            }
-        ]
-    });
-    */
+    if (typeof key === 'undefined' || key == '') {
+        var lists = await Content.find().sort({ number: -1 }).skip(((page - 1) * pageSize)).limit(pageSize);
+    } else {
+        var lists = await Content.find({
+            $or: [
+                {
+                    'name': '/' + key + '/'
+                },
+                {
+                    'subject': '/' + key + '/'
+                }
+            ]
+        }).sort({ number: -1 }).skip(((page - 1) * pageSize)).limit(pageSize);
+    }
     
     res.render('moon/list', { lists });
 
