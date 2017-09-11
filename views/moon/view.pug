@@ -1,0 +1,40 @@
+extends ../layout2
+
+block addhead
+    link(rel='stylesheet' href='/stylesheets/style.css')
+    //link(rel='stylesheet' href='http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.7/summernote.css')
+
+    style(type="text/css").
+        .sbutton {
+            margin: 10px;
+        }
+        .content_view {
+            border: solid 2px black;
+            height: auto;
+            margin-bottom: 20px;
+            min-height: 300px;
+            word-break: break-all;
+            word-wrap: break-word;
+        }
+       
+block content    
+    div(style='height: 30px')
+    form(name='view_form' method='post' action='/moon/delete')
+        input(type='hidden' name='_id' value=content._id)
+        div(class='content_box')
+            div(class='subject_line')
+                input(class='text_box' name='name' readonly value=content.name)
+            div(style='height: 30px')
+            div(class='subject_line')
+                input(class='text_box' name='subject' readonly value=content.subject)
+            div(style='height: 30px')
+            div(class='contents content_view') #{content.content}
+            div(style='text-align: center;')
+                button(type='button' class='sbutton' onclick="location.href='/moon/modify/" + content.number + "'") 수정
+                button(type='submit' class='sbutton') 삭제 
+                button(type='button' class='sbutton' onclick="location.href='/moon/list'") 리스트
+
+block addscript
+    script(src='http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.7/summernote.js')
+    script(src='/js/moon_scripts.js')
+
