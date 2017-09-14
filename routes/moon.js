@@ -1,6 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var controller = require('../controller/moon/postcontroller');
+var csrf = require('csurf');
+var csrfProtection = csrf({ cookie: true });
+var logincheck = require('../middleware/logincheck');
+var validcontroller = require('../controller/moon/validcontroller')
 
 /* moon router */
 router.get('/', function (req, res, next) {
@@ -9,18 +13,24 @@ router.get('/', function (req, res, next) {
 
 router.get('/list/:page?/:key?', controller.list);
 
-router.get('/view/:number', controller.view);
+router.get('/view/:number', csrfProtection, controller.view);
 
-router.get('/write', function (req, res, next) {
-    res.render('moon/write', { title: 'moon' });
+router.get('/write', csrfProtection, function (req, res, next) {
+    res.render('moon/write', { title: 'moon', csrfToken: req.csrfToken(), message: req.flash('message') });
 });
 
-router.get('/modify/:number', controller.modify);
+//logincheck 미들웨어 추가. 함수 실행전에 logincheck가 먼저 실행됨.
+router.get('/logincheck', logincheck, function (req, res, next) {
+    res.send('logined');
+})
 
-router.post('/post', controller.post);
+router.get('/modify/:number', csrfProtection, controller.modify);
 
-router.post('/update', controller.update);
+//validcontroller 미들웨어 추가. csrfProtection, controller.post가 실행되기 전에 먼저 실행 됨.
+router.post('/post', validcontroller, csrfProtection, controller.post);
 
-router.post('/delete', controller.delete);
+router.post('/update', csrfProtection, controller.update);
+
+router.post('/delete', csrfProtection, controller.delete);
 
 module.exports = router;

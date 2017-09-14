@@ -4,6 +4,10 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+const flash = require('connect-flash');
+
 const helpers = require('./helpers');
 const index = require('./routes/index');
 const moon = require('./routes/moon');
@@ -30,6 +34,26 @@ app.use((req, res, next) => {
   res.locals.currentPath = req.path;
   next();
 });
+
+
+//몽고디비는 반드시 라우터 이전에 선언되어야 함.
+app.use(session({
+    //몽고디비에 세션 저장. sessions 컬렉션이 자동으로 생성됨.
+    store: new MongoStore({
+        ttl: 24 * 60 * 60,
+        url: process.env.DATABASE,
+    }),
+    saveUninitialized: true,
+    resave: true,
+    key: 'study',
+    secret: 'study_session_key',
+    cookie: {
+        maxAge: 1000 * 60 * 60
+    },
+}));
+
+//flash session. req.flash('key', 'value')로 한번만 호출되는 세션 사용 가능. value가 없을 시 읽어옴.
+app.use(flash());
 
 app.use('/', index);
 app.use('/moon', moon);
