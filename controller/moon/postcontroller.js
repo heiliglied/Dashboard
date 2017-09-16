@@ -43,7 +43,7 @@ exports.list = async function (req, res) {
     var key = (req.params.key) ? req.params.key : req.query.key;
 
     var blockSize = 5;
-    var pageSize = 2;
+    var pageSize = 1;
 
     var totalCount = 0;
 
@@ -52,6 +52,9 @@ exports.list = async function (req, res) {
     }
 
     if (typeof key === 'undefined' || key == '') {
+
+        key = '';
+
         totalCount = await Content.count();
         var lists = await Content.find().sort({ number: -1 }).skip(((page - 1) * pageSize)).limit(pageSize);
     } else {
@@ -77,10 +80,7 @@ exports.list = async function (req, res) {
         }).sort({ number: -1 }).skip(((page - 1) * pageSize)).limit(pageSize);
     }
 
-    var paging = Methods.paging(totalCount, page, blockSize, pageSize, false, true, true, false, '<li class="btn">-_-num-_-</li>');
-    //function(totalCount, thisPage, blockSize, pageSize, minShow = false, block = false, firstEnd = false, showFast = false, fastPrev = false, fastNext = false, numBtn = false, prevBtn = false, nextBtn = false, firstBtn = false, endBtn = false)    
-    console.log('page = ' + paging);
-
+    var paging = Methods.paging('/moon/list', key, totalCount, page, blockSize, pageSize);
     res.render('moon/list', { lists: lists, page: paging });
 };
 

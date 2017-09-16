@@ -33,7 +33,7 @@ block content
             div(style='text-align: center;')
                 button(type='button' class='sbutton' onclick="location.href='/moon/modify/" + content.number + "'") 수정
                 button(type='submit' class='sbutton') 삭제 
-                button(type='button' class='sbutton' onclick="location.href='/moon/list'") 리스트
+                button(type='button' class='sbutton' onclick="history.back()") 리스트
 
 block addscript
     script(src='http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.7/summernote.js')
