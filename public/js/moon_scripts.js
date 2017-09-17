@@ -3,8 +3,7 @@ $("#content").summernote({
 });
 
 function post_delete (_id) {
-    var f = document.modify_form;
-    f._id = _id;
+    var f = document.modify_form;    
     f.action = '/moon/delete';
     f.submit();
 }

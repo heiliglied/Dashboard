@@ -7,6 +7,7 @@ block addhead
 block content    
     div(style='height: 30px')
     form(name='write_form' method='post' action='/moon/post')
+        input(type="hidden" name="_csrf" value=csrfToken)
         div(class='content_box')
             div(class='subject_line')
                 input(class='text_box' name='name' placeholder='작성자')
@@ -22,4 +23,8 @@ block content
 block addscript
     script(src='http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.7/summernote.js')
     script(src='/js/moon_scripts.js')
-
+    script.
+        var message = "#{message}";
+        if(message != ''){
+            alert(message);
+        }
