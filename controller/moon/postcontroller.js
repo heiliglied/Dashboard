@@ -43,7 +43,7 @@ exports.list = async function (req, res) {
     var key = (req.params.key) ? req.params.key : req.query.key;
 
     var blockSize = 5;
-    var pageSize = 1;
+    var pageSize = 2;
 
     var totalCount = 0;
 
@@ -57,31 +57,32 @@ exports.list = async function (req, res) {
 
         totalCount = await Content.count();
         var lists = await Content.find().sort({ number: -1 }).skip(((page - 1) * pageSize)).limit(pageSize);
+        
     } else {
         totalCount = await Content.find({
             $or: [
                 {
-                    'name': key
+                    'name': new RegExp(".*" + key + ".*")
                 },
                 {
-                    'subject': key
+                    'subject': new RegExp(".*" + key + ".*")
                 }
             ]
         }).count();
         var lists = await Content.find({
             $or: [
                 {
-                    'name': key
+                    'name': new RegExp(".*" + key + ".*")
                 },
                 {
-                    'subject': key
+                    'subject': new RegExp(".*" + key + ".*")
                 }
             ]
         }).sort({ number: -1 }).skip(((page - 1) * pageSize)).limit(pageSize);
     }
 
     var paging = Methods.paging('/moon/list', key, totalCount, page, blockSize, pageSize);
-    res.render('moon/list', { lists: lists, page: paging });
+    res.render('moon/list', { lists: lists, page: page, key: key, paging: paging });
 };
 
 exports.view = async function (req, res) {
