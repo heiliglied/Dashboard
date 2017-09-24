@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const flash = require('connect-flash');
+const moment = require('moment');
 
 const helpers = require('./helpers');
 const index = require('./routes/index');
@@ -16,6 +17,8 @@ const lee = require('./routes/lee');
 const yoo = require('./routes/yoo');
 
 const app = express();
+
+app.locals.moment = require('moment');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
