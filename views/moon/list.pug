@@ -34,7 +34,7 @@ block content
                                                         td= datas.number
                                                         td #{datas.name}
                                                         td= datas.subject
-                                                        td= datas.created
+                                                        td #{moment(datas.created).format('YYYY년 MM월 DD일 H:m:s')}
 
                                             nav
                                                 ul(class="pagination") !{page}
