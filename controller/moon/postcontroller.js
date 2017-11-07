@@ -43,7 +43,7 @@ exports.list = async function (req, res) {
     var key = (req.params.key) ? req.params.key : req.query.key;
 
     var blockSize = 5;
-    var pageSize = 2;
+    var pageSize = 1;
 
     var totalCount = 0;
 
@@ -81,7 +81,9 @@ exports.list = async function (req, res) {
         }).sort({ number: -1 }).skip(((page - 1) * pageSize)).limit(pageSize);
     }
 
-    var paging = Methods.paging('/moon/list', key, totalCount, page, blockSize, pageSize);
+    //totalCount, thisPage, link, blockSize = false, pageSize = false
+    var paging = Methods.paging(totalCount, page, "location.href='/moon/list/-_-num-_-/" + key + "'", blockSize, pageSize);
+
     res.render('moon/list', { lists: lists, page: page, key: key, paging: paging });
 };
 

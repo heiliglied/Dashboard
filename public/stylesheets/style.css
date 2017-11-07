@@ -24,3 +24,14 @@ a {
     height: 30px;
     font-size: 24px;
 }
+
+.pagination {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.pagination > li {
+    width: 30px;
+    height: 30px;
+    float: left;
+}

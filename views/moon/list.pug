@@ -36,7 +36,7 @@ block content
                                                         td= datas.subject
                                                         td #{moment(datas.created).format('YYYY년 MM월 DD일 H:m:s')}
 
-                                            nav
-                                                ul(class="pagination") !{page}
-                                            div(style='width: 100%; text-align: right;')
-                                                button(type='button' onclick="location.href='/moon/write'") 글쓰기
+                                        div
+                                            ul(class="pagination") !{paging}
+                                        div(style='width: 100%; text-align: right;')
+                                            button(type='button' onclick="location.href='/moon/write'") 글쓰기
