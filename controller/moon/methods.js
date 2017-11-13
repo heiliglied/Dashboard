@@ -150,7 +150,7 @@ var methods = module.exports = {
                 }
 
                 startpage = (((Number(thisPage) - Number(blockSize)) + 1) <= 1) ? 1 : ((Number(thisPage) - Number(blockSize)) + 1);
-                loopsize = startpage + blockSize - 1;
+                loopsize = (totlaPage > Number(blockSize)) ? startpage + blockSize - 1 : totalPage ;
 
             }
 
